@@ -1,0 +1,64 @@
+PartnersIntegrationService:
+    Db:
+        LogsConnString:
+            settings-key: PartnersIntegrationService-LogsConnString
+            types:
+              - AzureTableStorage
+        DataConnString:
+            settings-key: PartnersIntegrationService-DataConnString
+        MessageContentConnString:
+            settings-key: PartnersIntegrationService-MessageContentConnString
+            types:
+              - AzureTableStorage
+    Notifications:
+      PushNotifications:
+        PartnerMessageTemplateId:
+          settings-key: PartnersIntegrationService-Notifications-PushNotifications-PartnerMessageTemplateId
+    PartnerPaymentClient:
+        ExternalPartnerPaymentConnectionRetries:
+            settings-key: PartnersIntegrationService-ExternalPartnerPaymentConnectionRetries
+        
+SlackNotifications:
+    AzureQueue:
+        ConnectionString:
+            settings-key: SlackNotificationsConnString
+            types:
+                - AzureTableStorage
+        QueueName:
+            settings-key: SlackQueueName
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl
+CustomerProfileServiceClient:
+    ServiceUrl:
+        settings-key: CustomerProfileServiceUrl
+PrivateBlockchainFacadeClient:
+  ServiceUrl:
+    settings-key: PrivateBlockchainFacadeServiceUrl
+Rabbit:
+    ConnectionString:
+      settings-key: PartnersIntegrationRabbitMQ
+      types:
+        - RabbitMq
+    WalletConnectionString:
+      settings-key: WalletManagementRabbitMQ
+      types:
+        - RabbitMq
+ReferralServiceClient:
+    ServiceUrl:
+        settings-key: ReferralServiceUrl
+PartnersPaymentsServiceClient:
+    ServiceUrl:
+        settings-key: PartnersPaymentsServiceUrl
+PartnerManagementServiceClient:
+    ServiceUrl:
+        settings-key: PartnerManagementServiceUrl
+TiersServiceClient:
+    ServiceUrl:
+        settings-key: TiersServiceUrl
+CustomerManagementServiceClient:
+    ServiceUrl:
+        settings-key: CustomerManagementServiceUrl
+EligibilityEngineServiceClient:
+    ServiceUrl:
+        settings-key: EligibilityEngineServiceUrl
