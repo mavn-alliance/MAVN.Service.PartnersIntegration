@@ -20,7 +20,7 @@ namespace MAVN.Service.PartnersIntegration.MsSqlRepositories.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Lykke.Service.PartnersIntegration.MsSqlRepositories.Entities.MessageEntity", b =>
+            modelBuilder.Entity("MAVN.Service.PartnersIntegration.MsSqlRepositories.Entities.MessageEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -50,7 +50,7 @@ namespace MAVN.Service.PartnersIntegration.MsSqlRepositories.Migrations
                     b.ToTable("messages");
                 });
 
-            modelBuilder.Entity("Lykke.Service.PartnersIntegration.MsSqlRepositories.Entities.PaymentProcessedCallbackUrlEntity", b =>
+            modelBuilder.Entity("MAVN.Service.PartnersIntegration.MsSqlRepositories.Entities.PaymentProcessedCallbackUrlEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
