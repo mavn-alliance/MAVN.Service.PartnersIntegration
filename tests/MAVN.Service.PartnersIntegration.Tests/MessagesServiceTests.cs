@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using AutoFixture;
 using Lykke.Logs;
@@ -103,7 +103,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Error, CustomerBlockStatusError.CustomerNotFound)
                     .Create()));
 
@@ -121,7 +121,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Status, CustomerActivityStatus.Blocked)
                     .Create()));
 
@@ -139,7 +139,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .Create()));
 
             _partnerAndLocationHelperMock
@@ -163,7 +163,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Create<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()));
+                    .Create<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()));
 
             _partnerAndLocationHelperMock
                 .Setup(x => x.ValidatePartnerInfo(It.IsAny<string>(), It.IsAny<LocationInfoResponse>()))
@@ -186,7 +186,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Error, CustomerBlockStatusError.None)
                     .With(x => x.Status, CustomerActivityStatus.Active)
                     .Create()));
@@ -226,7 +226,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Error, CustomerBlockStatusError.None)
                     .With(x => x.Status, CustomerActivityStatus.Active)
                     .Create()));
@@ -265,7 +265,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Error, CustomerBlockStatusError.None)
                     .With(x => x.Status, CustomerActivityStatus.Active)
                     .Create()));
@@ -301,7 +301,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerManagementServiceClientMock
                 .Setup(x => x.CustomersApi.GetCustomerBlockStateAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(_fixture
-                    .Build<CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
+                    .Build<Lykke.Service.CustomerManagement.Client.Models.Responses.CustomerBlockStatusResponse>()
                     .With(x => x.Error, CustomerBlockStatusError.None)
                     .With(x => x.Status, CustomerActivityStatus.Active)
                     .Create()));

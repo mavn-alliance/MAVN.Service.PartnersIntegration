@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lykke.Logs;
@@ -82,7 +82,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email = email }
+                    Profile = new CustomerProfile { Email = email }
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))
@@ -357,7 +357,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email = email + "Wrong"}
+                    Profile = new CustomerProfile { Email = email + "Wrong"}
                 }));
 
             //Act
@@ -396,7 +396,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email =  email}
+                    Profile = new CustomerProfile { Email =  email}
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))
@@ -525,7 +525,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByEmailAsync(It.Is<GetByEmailRequestModel>(i => i.Email == email)))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { CustomerId = customerId }
+                    Profile = new CustomerProfile { CustomerId = customerId }
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))

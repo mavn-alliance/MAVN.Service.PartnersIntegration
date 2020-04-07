@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Net.Http;
@@ -19,9 +19,9 @@ using Lykke.Service.PartnersPayments.Client;
 using Lykke.Service.PartnersPayments.Client.Enums;
 using Lykke.Service.PartnersPayments.Client.Models;
 using Lykke.Service.PartnersPayments.Contract;
-using PaymentRequestStatus = Lykke.Service.PartnersIntegration.Domain.Enums.PaymentRequestStatus;
+using PaymentRequestStatus = MAVN.Service.PartnersIntegration.Domain.Enums.PaymentRequestStatus;
 
-[assembly: InternalsVisibleTo("Lykke.Service.PartnersIntegration.Tests")]
+[assembly: InternalsVisibleTo("MAVN.Service.PartnersIntegration.Tests")]
 
 namespace MAVN.Service.PartnersIntegration.DomainServices.Services
 {
@@ -411,33 +411,33 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
             _log.Info("Successfully sent callback to partner", callbackInfo);
         }
 
-        private PaymentRequestStatus ProcessPaymentRequestStatus(PartnersPayments.Client.Enums.PaymentRequestStatus responseModelStatus)
+        private PaymentRequestStatus ProcessPaymentRequestStatus(Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus responseModelStatus)
         {
             switch (responseModelStatus)
             {
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.Created:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferStarted:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.Created:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferStarted:
                     return PaymentRequestStatus.PendingCustomerConfirmation;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.RejectedByCustomer:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RejectedByCustomer:
                     return PaymentRequestStatus.RejectedByCustomer;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferSucceeded:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnStarted:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundStarted:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferSucceeded:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnStarted:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundStarted:
                     return PaymentRequestStatus.PendingPartnerConfirmation;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnSucceeded:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnSucceeded:
                     return PaymentRequestStatus.PaymentExecuted;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundSucceeded:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.CancelledByPartner:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundSucceeded:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.CancelledByPartner:
                     return PaymentRequestStatus.CancelledByPartner;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.RequestExpired:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RequestExpired:
                     return PaymentRequestStatus.RequestExpired;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundStarted:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundSucceeded:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundStarted:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundSucceeded:
                     return PaymentRequestStatus.PaymentExpired;
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundFailed:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundFailed:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferFailed:
-                case PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnFailed:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundFailed:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundFailed:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferFailed:
+                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnFailed:
                 default:
                     return PaymentRequestStatus.OperationFailed;
             }
