@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -131,7 +131,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
                     ErrorCode = CustomerProfileErrorCodes.None,
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile
+                    Profile = new CustomerProfile
                     {
                         Email = referrerEmail,
                         FirstName = referrerFirstName,
@@ -143,7 +143,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
                     ErrorCode = CustomerProfileErrorCodes.None,
-                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile
+                    Profile = new CustomerProfile
                     {
                         Email = refereeEmail
                     }

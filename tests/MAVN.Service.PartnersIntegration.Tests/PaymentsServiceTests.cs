@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoFixture;
@@ -17,7 +17,7 @@ using Lykke.Service.PartnersPayments.Client.Enums;
 using Lykke.Service.PartnersPayments.Client.Models;
 using Moq;
 using Xunit;
-using PaymentRequestStatus = Lykke.Service.PartnersIntegration.Domain.Enums.PaymentRequestStatus;
+using PaymentRequestStatus = MAVN.Service.PartnersIntegration.Domain.Enums.PaymentRequestStatus;
 
 namespace MAVN.Service.PartnersIntegration.Tests
 {
