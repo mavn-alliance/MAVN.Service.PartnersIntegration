@@ -1,5 +1,5 @@
 using System;
-using Falcon.Numerics;
+using MAVN.Numerics;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 
 namespace MAVN.Service.PartnersIntegration.Domain.Models

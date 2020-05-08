@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MAVN.Service.PartnersIntegration.Domain.Models;
-using Lykke.Service.PartnersPayments.Contract;
+using MAVN.Service.PartnersPayments.Contract;
 
 namespace MAVN.Service.PartnersIntegration.Domain.Services
 {

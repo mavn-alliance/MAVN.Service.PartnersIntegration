@@ -2,24 +2,24 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Lykke.Logs;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.CustomerProfile.Client.Models.Enums;
-using Lykke.Service.CustomerProfile.Client.Models.Requests;
-using Lykke.Service.CustomerProfile.Client.Models.Responses;
-using Lykke.Service.EligibilityEngine.Client;
-using Lykke.Service.EligibilityEngine.Client.Enums;
-using Lykke.Service.EligibilityEngine.Client.Models.ConversionRate.Requests;
-using Lykke.Service.EligibilityEngine.Client.Models.ConversionRate.Responses;
-using Lykke.Service.PartnerManagement.Client;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.CustomerProfile.Client.Models.Enums;
+using MAVN.Service.CustomerProfile.Client.Models.Requests;
+using MAVN.Service.CustomerProfile.Client.Models.Responses;
+using MAVN.Service.EligibilityEngine.Client;
+using MAVN.Service.EligibilityEngine.Client.Enums;
+using MAVN.Service.EligibilityEngine.Client.Models.ConversionRate.Requests;
+using MAVN.Service.EligibilityEngine.Client.Models.ConversionRate.Responses;
+using MAVN.Service.PartnerManagement.Client;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.DomainServices.Services;
-using Lykke.Service.PrivateBlockchainFacade.Client;
-using Lykke.Service.PrivateBlockchainFacade.Client.Models;
-using Lykke.Service.Tiers.Client;
-using Lykke.Service.Tiers.Client.Models.Tiers;
+using MAVN.Service.PrivateBlockchainFacade.Client;
+using MAVN.Service.PrivateBlockchainFacade.Client.Models;
+using MAVN.Service.Tiers.Client;
+using MAVN.Service.Tiers.Client.Models.Tiers;
 using Moq;
 using Xunit;
 
@@ -67,10 +67,10 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerIdString, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile {CustomerId = customerIdString }
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile {CustomerId = customerIdString }
                 }));
             _tiersMock.Setup(x => x.Customers.GetTierAsync(customerId))
-                .Returns(Task.FromResult(new TierModel()));
+                .Returns(Task.FromResult(new CustomerTierResponseModel()));
 
             //Act
             var response = await _service
@@ -110,10 +110,10 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByEmailAsync(It.Is<GetByEmailRequestModel>(i => i.Email == email)))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile {CustomerId = customerIdString }
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile {CustomerId = customerIdString }
                 }));
             _tiersMock.Setup(x => x.Customers.GetTierAsync(customerId))
-                .Returns(Task.FromResult(new TierModel()));
+                .Returns(Task.FromResult(new CustomerTierResponseModel()));
             
             //Act
             var response = await _service
@@ -153,10 +153,10 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByPhoneAsync(It.Is<GetByPhoneRequestModel>(i => i.Phone == phone)))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile {CustomerId = customerIdString }
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile {CustomerId = customerIdString }
                 }));
             _tiersMock.Setup(x => x.Customers.GetTierAsync(customerId))
-                .Returns(Task.FromResult(new TierModel()));
+                .Returns(Task.FromResult(new CustomerTierResponseModel()));
 
             //Act
             var response = await _service
@@ -204,7 +204,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile()
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile()
                 }));
 
             _privateBlockchainFacadeClientMock.Setup(x => x.CustomersApi.GetBalanceAsync(customerIdGuid))
