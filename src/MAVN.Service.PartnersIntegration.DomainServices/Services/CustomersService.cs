@@ -247,7 +247,7 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
                 PartnerId = Guid.Parse(contract.PartnerId),
                 FromCurrency = MVNCurrencyCode,
                 ToCurrency = contract.Currency,
-                Amount = Falcon.Numerics.Money18.Parse(customerBalance.Total.ToString())
+                Amount = customerBalance.Total
             };
 
             var conversionResponse =

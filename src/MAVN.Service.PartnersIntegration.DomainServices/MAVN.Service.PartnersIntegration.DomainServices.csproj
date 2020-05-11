@@ -8,11 +8,11 @@
     <PackageReference Include="Lykke.RabbitMqBroker" Version="7.13.1" />
     <PackageReference Include="MAVN.Service.CustomerManagement.Client" Version="1.1.0" />
     <PackageReference Include="MAVN.Service.CustomerProfile.Client" Version="1.3.0" />
-    <PackageReference Include="MAVN.Service.EligibilityEngine.Client" Version="1.1.0" />
+    <PackageReference Include="MAVN.Service.EligibilityEngine.Client" Version="1.1.1" />
     <PackageReference Include="MAVN.Service.NotificationSystem.SubscriberContract" Version="1.1.0" />
     <PackageReference Include="MAVN.Service.PartnerManagement.Client" Version="1.4.0" />
-    <PackageReference Include="MAVN.Service.PartnersPayments.Client" Version="1.0.1" />
-    <PackageReference Include="MAVN.Service.PartnersPayments.Contract" Version="1.0.1" />
+    <PackageReference Include="MAVN.Service.PartnersPayments.Client" Version="1.1.0" />
+    <PackageReference Include="MAVN.Service.PartnersPayments.Contract" Version="1.1.0" />
     <PackageReference Include="MAVN.Service.PrivateBlockchainFacade.Client" Version="1.1.0" />
     <PackageReference Include="MAVN.Service.Referral.Client" Version="2.0.0" />
     <PackageReference Include="MAVN.Service.Tiers.Client" Version="1.0.1" />
