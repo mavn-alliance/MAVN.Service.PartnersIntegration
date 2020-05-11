@@ -6,19 +6,19 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common.Log;
-using Falcon.Numerics;
+using MAVN.Numerics;
 using Lykke.Common.Log;
-using Lykke.Service.PartnerManagement.Client;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+using MAVN.Service.PartnerManagement.Client;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.Domain.Repositories;
 using MAVN.Service.PartnersIntegration.Domain.Services;
-using Lykke.Service.PartnersPayments.Client;
-using Lykke.Service.PartnersPayments.Client.Enums;
-using Lykke.Service.PartnersPayments.Client.Models;
-using Lykke.Service.PartnersPayments.Contract;
+using MAVN.Service.PartnersPayments.Client;
+using MAVN.Service.PartnersPayments.Client.Enums;
+using MAVN.Service.PartnersPayments.Client.Models;
+using MAVN.Service.PartnersPayments.Contract;
 using PaymentRequestStatus = MAVN.Service.PartnersIntegration.Domain.Enums.PaymentRequestStatus;
 
 [assembly: InternalsVisibleTo("MAVN.Service.PartnersIntegration.Tests")]
@@ -362,7 +362,7 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
 
             if (responseModel.TokensSendingAmount.HasValue)
             {
-                tokensAmount = responseModel.TokensSendingAmount.Value;
+                tokensAmount = Money18.Parse(responseModel.TokensSendingAmount.Value.ToString());
                 if (responseModel.FiatSendingAmount.HasValue)
                 {
                     fiatAmount = responseModel.FiatSendingAmount.Value;
@@ -374,7 +374,7 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
             }
             else
             {
-                tokensAmount = responseModel.TokensAmount;
+                tokensAmount = Money18.Parse(responseModel.TokensAmount.ToString());
                 fiatAmount = responseModel.FiatAmount;
             }
 
@@ -411,33 +411,33 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
             _log.Info("Successfully sent callback to partner", callbackInfo);
         }
 
-        private PaymentRequestStatus ProcessPaymentRequestStatus(Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus responseModelStatus)
+        private PaymentRequestStatus ProcessPaymentRequestStatus(MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus responseModelStatus)
         {
             switch (responseModelStatus)
             {
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.Created:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferStarted:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.Created:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferStarted:
                     return PaymentRequestStatus.PendingCustomerConfirmation;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RejectedByCustomer:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RejectedByCustomer:
                     return PaymentRequestStatus.RejectedByCustomer;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferSucceeded:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnStarted:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundStarted:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferSucceeded:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnStarted:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundStarted:
                     return PaymentRequestStatus.PendingPartnerConfirmation;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnSucceeded:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnSucceeded:
                     return PaymentRequestStatus.PaymentExecuted;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundSucceeded:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.CancelledByPartner:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundSucceeded:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.CancelledByPartner:
                     return PaymentRequestStatus.CancelledByPartner;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RequestExpired:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.RequestExpired:
                     return PaymentRequestStatus.RequestExpired;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundStarted:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundSucceeded:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundStarted:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundSucceeded:
                     return PaymentRequestStatus.PaymentExpired;
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundFailed:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundFailed:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferFailed:
-                case Lykke.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnFailed:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.ExpirationTokensRefundFailed:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensRefundFailed:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensTransferFailed:
+                case MAVN.Service.PartnersPayments.Client.Enums.PaymentRequestStatus.TokensBurnFailed:
                 default:
                     return PaymentRequestStatus.OperationFailed;
             }

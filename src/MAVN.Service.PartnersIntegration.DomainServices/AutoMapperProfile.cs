@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using AutoMapper;
-using Lykke.Service.EligibilityEngine.Client.Enums;
+using MAVN.Service.EligibilityEngine.Client.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Models;
-using Lykke.Service.PartnersPayments.Client.Enums;
+using MAVN.Service.PartnersPayments.Client.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
-using Lykke.Service.PartnersPayments.Client.Models;
+using MAVN.Service.PartnersPayments.Client.Models;
 
 namespace MAVN.Service.PartnersIntegration.DomainServices
 {

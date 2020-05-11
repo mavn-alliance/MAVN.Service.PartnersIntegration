@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Lykke.Logs;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.CustomerProfile.Client.Models.Enums;
-using Lykke.Service.CustomerProfile.Client.Models.Responses;
-using Lykke.Service.PartnerManagement.Client;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.CustomerProfile.Client.Models.Enums;
+using MAVN.Service.CustomerProfile.Client.Models.Responses;
+using MAVN.Service.PartnerManagement.Client;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.DomainServices.Services;
-using Lykke.Service.Referral.Client;
-using Lykke.Service.Referral.Client.Enums;
-using Lykke.Service.Referral.Client.Models.Requests;
-using Lykke.Service.Referral.Client.Models.Responses;
+using MAVN.Service.Referral.Client;
+using MAVN.Service.Referral.Client.Enums;
+using MAVN.Service.Referral.Client.Models.Requests;
+using MAVN.Service.Referral.Client.Models.Responses;
 using Moq;
 using Xunit;
 
@@ -131,7 +131,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
                     ErrorCode = CustomerProfileErrorCodes.None,
-                    Profile = new CustomerProfile
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile
                     {
                         Email = referrerEmail,
                         FirstName = referrerFirstName,
@@ -143,7 +143,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
                     ErrorCode = CustomerProfileErrorCodes.None,
-                    Profile = new CustomerProfile
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile
                     {
                         Email = refereeEmail
                     }

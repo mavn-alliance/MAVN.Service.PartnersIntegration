@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Common.Log;
 using Lykke.Common.Log;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.CustomerProfile.Client.Models.Enums;
-using Lykke.Service.CustomerProfile.Client.Models.Requests;
-using Lykke.Service.CustomerProfile.Client.Models.Responses;
-using Lykke.Service.EligibilityEngine.Client;
-using Lykke.Service.EligibilityEngine.Client.Enums;
-using Lykke.Service.EligibilityEngine.Client.Models.ConversionRate.Requests;
-using Lykke.Service.PartnerManagement.Client;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.CustomerProfile.Client.Models.Enums;
+using MAVN.Service.CustomerProfile.Client.Models.Requests;
+using MAVN.Service.CustomerProfile.Client.Models.Responses;
+using MAVN.Service.EligibilityEngine.Client;
+using MAVN.Service.EligibilityEngine.Client.Enums;
+using MAVN.Service.EligibilityEngine.Client.Models.ConversionRate.Requests;
+using MAVN.Service.PartnerManagement.Client;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.Domain.Services;
-using Lykke.Service.PrivateBlockchainFacade.Client;
-using Lykke.Service.Tiers.Client;
+using MAVN.Service.PrivateBlockchainFacade.Client;
+using MAVN.Service.Tiers.Client;
 
 namespace MAVN.Service.PartnersIntegration.DomainServices.Services
 {

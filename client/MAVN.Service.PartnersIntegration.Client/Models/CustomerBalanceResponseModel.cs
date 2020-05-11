@@ -1,4 +1,4 @@
-using Falcon.Numerics;
+using MAVN.Numerics;
 using MAVN.Service.PartnersIntegration.Client.Enums;
 
 namespace MAVN.Service.PartnersIntegration.Client.Models

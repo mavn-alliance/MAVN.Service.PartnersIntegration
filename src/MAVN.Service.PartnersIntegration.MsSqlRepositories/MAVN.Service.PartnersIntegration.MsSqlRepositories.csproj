@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="Lykke.Common.MsSql" Version="2.3.0" />
+    <PackageReference Include="MAVN.Common.MsSql" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MAVN.Service.PartnersIntegration.Domain\MAVN.Service.PartnersIntegration.Domain.csproj" />

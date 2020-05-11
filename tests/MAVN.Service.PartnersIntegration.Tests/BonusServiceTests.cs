@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lykke.Logs;
 using Lykke.RabbitMqBroker.Publisher;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.CustomerProfile.Client.Models.Requests;
-using Lykke.Service.CustomerProfile.Client.Models.Responses;
-using Lykke.Service.PartnerManagement.Client;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.CustomerProfile.Client.Models.Requests;
+using MAVN.Service.CustomerProfile.Client.Models.Responses;
+using MAVN.Service.PartnerManagement.Client;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Contract;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.DomainServices.Services;
-using Lykke.Service.Referral.Client;
-using Lykke.Service.Referral.Client.Enums;
-using Lykke.Service.Referral.Client.Models.Requests;
-using Lykke.Service.Referral.Client.Models.Responses;
+using MAVN.Service.Referral.Client;
+using MAVN.Service.Referral.Client.Enums;
+using MAVN.Service.Referral.Client.Models.Requests;
+using MAVN.Service.Referral.Client.Models.Responses;
 using Moq;
 using Xunit;
 
@@ -82,7 +82,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile { Email = email }
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email = email }
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))
@@ -357,7 +357,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile { Email = email + "Wrong"}
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email = email + "Wrong"}
                 }));
 
             //Act
@@ -396,7 +396,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByCustomerIdAsync(customerId, false, false))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile { Email =  email}
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { Email =  email}
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))
@@ -525,7 +525,7 @@ namespace MAVN.Service.PartnersIntegration.Tests
             _customerProfileClientMock.Setup(x => x.CustomerProfiles.GetByEmailAsync(It.Is<GetByEmailRequestModel>(i => i.Email == email)))
                 .Returns(Task.FromResult(new CustomerProfileResponse
                 {
-                    Profile = new CustomerProfile { CustomerId = customerId }
+                    Profile = new CustomerProfile.Client.Models.Responses.CustomerProfile { CustomerId = customerId }
                 }));
 
             _referralClientMock.Setup(x => x.ReferralHotelsApi.UseAsync(It.IsAny<ReferralHotelUseRequest>()))

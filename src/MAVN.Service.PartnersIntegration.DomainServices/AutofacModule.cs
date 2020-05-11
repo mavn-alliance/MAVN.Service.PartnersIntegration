@@ -1,15 +1,15 @@
-using Autofac;
-using Lykke.Service.CustomerManagement.Client;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.EligibilityEngine.Client;
-using Lykke.Service.PartnerManagement.Client;
+﻿using Autofac;
+using MAVN.Service.CustomerManagement.Client;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.EligibilityEngine.Client;
+using MAVN.Service.PartnerManagement.Client;
 using MAVN.Service.PartnersIntegration.Domain.Helpers;
 using MAVN.Service.PartnersIntegration.Domain.Services;
 using MAVN.Service.PartnersIntegration.DomainServices.Services;
-using Lykke.Service.PartnersPayments.Client;
-using Lykke.Service.PrivateBlockchainFacade.Client;
-using Lykke.Service.Referral.Client;
-using Lykke.Service.Tiers.Client;
+using MAVN.Service.PartnersPayments.Client;
+using MAVN.Service.PrivateBlockchainFacade.Client;
+using MAVN.Service.Referral.Client;
+using MAVN.Service.Tiers.Client;
 
 namespace MAVN.Service.PartnersIntegration.DomainServices
 {

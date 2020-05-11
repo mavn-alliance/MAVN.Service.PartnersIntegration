@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
-using Lykke.Service.PartnerManagement.Client.Models.Location;
+﻿using System.Threading.Tasks;
+using MAVN.Service.PartnerManagement.Client.Models.Location;
 using MAVN.Service.PartnersIntegration.Domain.Enums;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 
