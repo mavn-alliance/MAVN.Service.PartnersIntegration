@@ -362,7 +362,7 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
 
             if (responseModel.TokensSendingAmount.HasValue)
             {
-                tokensAmount = Money18.Parse(responseModel.TokensSendingAmount.Value.ToString());
+                tokensAmount = responseModel.TokensSendingAmount.Value;
                 if (responseModel.FiatSendingAmount.HasValue)
                 {
                     fiatAmount = responseModel.FiatSendingAmount.Value;
@@ -374,7 +374,7 @@ namespace MAVN.Service.PartnersIntegration.DomainServices.Services
             }
             else
             {
-                tokensAmount = Money18.Parse(responseModel.TokensAmount.ToString());
+                tokensAmount = responseModel.TokensAmount;
                 fiatAmount = responseModel.FiatAmount;
             }
 
