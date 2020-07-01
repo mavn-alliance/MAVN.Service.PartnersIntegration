@@ -1,11 +1,11 @@
 ﻿using System.Data.Common;
-using MAVN.Common.MsSql;
+using MAVN.Persistence.PostgreSQL.Legacy;
 using MAVN.Service.PartnersIntegration.MsSqlRepositories.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAVN.Service.PartnersIntegration.MsSqlRepositories
 {
-    public class PartnersIntegrationContext : MsSqlContext
+    public class PartnersIntegrationContext : PostgreSQLContext
     {
         private const string Schema = "partners_integration";
 
@@ -33,7 +33,7 @@ namespace MAVN.Service.PartnersIntegration.MsSqlRepositories
         {
         }
 
-        protected override void OnLykkeModelCreating(ModelBuilder modelBuilder)
+        protected override void OnMAVNModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PaymentProcessedCallbackUrlEntity>()
                 .HasIndex(b => b.PaymentRequestId)

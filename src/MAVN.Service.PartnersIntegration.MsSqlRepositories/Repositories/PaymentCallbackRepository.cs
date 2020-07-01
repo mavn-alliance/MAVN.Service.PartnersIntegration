@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using MAVN.Common.MsSql;
+using MAVN.Persistence.PostgreSQL.Legacy;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.Domain.Repositories;
 using MAVN.Service.PartnersIntegration.MsSqlRepositories.Entities;
@@ -10,10 +10,10 @@ namespace MAVN.Service.PartnersIntegration.MsSqlRepositories.Repositories
 {
     public class PaymentCallbackRepository : IPaymentCallbackRepository
     {
-        private readonly MsSqlContextFactory<PartnersIntegrationContext> _msSqlContextFactory;
+        private readonly PostgreSQLContextFactory<PartnersIntegrationContext> _msSqlContextFactory;
         private readonly IMapper _mapper;
 
-        public PaymentCallbackRepository(MsSqlContextFactory<PartnersIntegrationContext> msSqlContextFactory,
+        public PaymentCallbackRepository(PostgreSQLContextFactory<PartnersIntegrationContext> msSqlContextFactory,
             IMapper mapper)
         {
             _msSqlContextFactory = msSqlContextFactory;
