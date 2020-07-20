@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using MAVN.Common.MsSql;
+using MAVN.Persistence.PostgreSQL.Legacy;
 using MAVN.Service.PartnersIntegration.Domain.Models;
 using MAVN.Service.PartnersIntegration.Domain.Repositories;
 using MAVN.Service.PartnersIntegration.MsSqlRepositories.Entities;
@@ -12,10 +12,10 @@ namespace MAVN.Service.PartnersIntegration.MsSqlRepositories.Repositories
 {
     public class MessagesRepository : IMessagesRepository
     {
-        private readonly MsSqlContextFactory<PartnersIntegrationContext> _msSqlContextFactory;
+        private readonly PostgreSQLContextFactory<PartnersIntegrationContext> _msSqlContextFactory;
         private readonly IMapper _mapper;
 
-        public MessagesRepository(MsSqlContextFactory<PartnersIntegrationContext> msSqlContextFactory,
+        public MessagesRepository(PostgreSQLContextFactory<PartnersIntegrationContext> msSqlContextFactory,
             IMapper mapper)
         {
             _msSqlContextFactory = msSqlContextFactory;
